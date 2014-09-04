@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="CanvasRenderingContext2D Extensions : This specification describes extension to drawImage and createPattern APIs of CanvasRenderingContext2D for supporting HTMLPictureElement.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>CanvasRenderingContext2D Extensions</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/vivekgalatage/CanvasRenderingContext2DExtension">View on GitHub</a>
+
+          <h1 id="project_title">CanvasRenderingContext2D Extensions</h1>
+          <h2 id="project_tagline">This specification describes extension to drawImage and createPattern APIs of CanvasRenderingContext2D for supporting HTMLPictureElement.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/vivekgalatage/CanvasRenderingContext2DExtension/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/vivekgalatage/CanvasRenderingContext2DExtension/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a name="support-picture-in-canvasrenderingcontext2d" class="anchor" href="#support-picture-in-canvasrenderingcontext2d"><span class="octicon octicon-link"></span></a>Support &lt;picture&gt; in CanvasRenderingContext2D</h2>
+
+<h2>
+<a name="table-of-contents" class="anchor" href="#table-of-contents"><span class="octicon octicon-link"></span></a>Table of contents</h2>
+
+<ul>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#the-canvasrenderingcontext2d">The CanvasRenderingContext2D</a></li>
+<li><a href="#the-picture-element">The &lt;picture&gt; element</a></li>
+<li>
+<a href="#use-case">Use case</a>
+
+<ul>
+<li><a href="#html">html</a></li>
+<li><a href="#javascript-drawimage-example">Javascript drawImage() example</a></li>
+<li><a href="#javascript-createpattern-example">Javascript createPattern() example</a></li>
+</ul>
+</li>
+<li><a href="#interface">Interface</a></li>
+<li><a href="#references">References</a></li>
+</ul><h3>
+<a name="abstract" class="anchor" href="#abstract"><span class="octicon octicon-link"></span></a>Abstract</h3>
+
+<p>This specification describes extension to drawImage and createPattern APIs of CanvasRenderingContext2D for supporting HTMLPictureElement.</p>
+
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
+
+<h3>
+<a name="the-canvasrenderingcontext2d" class="anchor" href="#the-canvasrenderingcontext2d"><span class="octicon octicon-link"></span></a>The CanvasRenderingContext2D</h3>
+
+<p>The canvas element provides scripts with a resolution-dependent bitmap canvas, which can be used for rendering graphs, game graphics, art, or other visual images on the fly.</p>
+
+<p>Each canvas element is associated with the RenderingContext. Current specification defines: '2d' and 'webgl' contexts. The specification, [1], describes more details about the canvas element and its associated contexts.</p>
+
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
+
+<h3>
+<a name="the-picture-element" class="anchor" href="#the-picture-element"><span class="octicon octicon-link"></span></a>The &lt;picture&gt; element</h3>
+
+<p>The &lt;picture&gt; element is a container which provides multiples sources to its contained img element to allow authors to declaratively control or give hints to the user agent about which image resource to use, based on the screen pixel density, viewport size, image format, and other factors.</p>
+
+<p>The specification, [2], describes more details about the &lt;picture&gt; element. </p>
+
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
+
+<h3>
+<a name="use-case" class="anchor" href="#use-case"><span class="octicon octicon-link"></span></a>Use case</h3>
+
+<h4>
+<a name="html" class="anchor" href="#html"><span class="octicon octicon-link"></span></a>HTML</h4>
+
+<div class="highlight highlight-HTML"><pre><span class="nt">&lt;picture</span> <span class="na">id=</span><span class="s">"samplePicture"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">media=</span><span class="s">"(min-width: 650px)"</span> <span class="na">srcset=</span><span class="s">"http://googlechrome.github.io/samples/picture-element/images/kitten-large.png"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">media=</span><span class="s">"(min-width: 465px)"</span> <span class="na">srcset=</span><span class="s">"http://googlechrome.github.io/samples/picture-element/images/kitten-medium.png"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://googlechrome.github.io/samples/picture-element/images/kitten-small.png"</span> <span class="na">alt=</span><span class="s">"a cute kitten"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/picture&gt;</span>
+<span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"targetCanvas"</span> <span class="na">width=</span><span class="s">"640"</span> <span class="na">height=</span><span class="s">"480"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
+
+<h4>
+<a name="javascript-drawimage-example" class="anchor" href="#javascript-drawimage-example"><span class="octicon octicon-link"></span></a>JavaScript: drawImage() example</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'targetCanvas'</span><span class="p">).</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">'2d'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pictureElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'samplePicture'</span><span class="p">);</span>
+
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">pictureElement</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
+
+<h4>
+<a name="javascript-createpattern-example" class="anchor" href="#javascript-createpattern-example"><span class="octicon octicon-link"></span></a>JavaScript: createPattern() example</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'targetCanvas'</span><span class="p">).</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">'2d'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pictureElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'samplePicture'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">pattern</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">createPattern</span><span class="p">(</span><span class="nx">pictureElement</span><span class="p">,</span> <span class="s1">'repeat'</span><span class="p">);</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="nx">pattern</span><span class="p">;</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+</pre></div>
+
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
+
+<h3>
+<a name="interface" class="anchor" href="#interface"><span class="octicon octicon-link"></span></a>Interface</h3>
+
+<div class="highlight highlight-idl"><pre>typedef (HTMLImageElement <span class="k">or</span>
+         HTMLVideoElement <span class="k">or</span>
+         HTMLCanvasElement <span class="k">or</span>
+         CanvasRenderingContext2D <span class="k">or</span>
+         ImageBitmap <span class="k">or</span>
+         HTMLPictureElement) CanvasImageSource;
+
+enum CanvasFillRule { "nonzero", "evenodd" };
+
+[Constructor(optional unsigned <span class="nb">long</span> width, unsigned <span class="nb">long</span> height), Exposed<span class="o">=</span><span class="nb">Window</span>,Worker]
+interface CanvasRenderingContext2D {
+  ...
+
+  <span class="o">//</span> drawing images
+  void drawImage(CanvasImageSource <span class="nb">image</span>, unrestricted <span class="nb">double</span> dx, unrestricted <span class="nb">double</span> dy);
+  void drawImage(CanvasImageSource <span class="nb">image</span>, unrestricted <span class="nb">double</span> dx, unrestricted <span class="nb">double</span> dy, unrestricted <span class="nb">double</span> dw, unrestricted <span class="nb">double</span> dh);
+  void drawImage(CanvasImageSource <span class="nb">image</span>, unrestricted <span class="nb">double</span> sx, unrestricted <span class="nb">double</span> sy, unrestricted <span class="nb">double</span> sw, unrestricted <span class="nb">double</span> sh, unrestricted <span class="nb">double</span> dx, unrestricted <span class="nb">double</span> dy, unrestricted <span class="nb">double</span> dw, unrestricted <span class="nb">double</span> dh);
+
+  ...
+
+  <span class="o">//</span> creating pattern
+  CanvasPattern createPattern(CanvasImageSource <span class="nb">image</span>, [TreatNullAs<span class="o">=</span>EmptyString] DOMString repetition);
+
+  ...
+};
+</pre></div>
+
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
+
+<h3>
+<a name="references" class="anchor" href="#references"><span class="octicon octicon-link"></span></a>References</h3>
+
+<p>[1] <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/scripting.html#canvasrenderingcontext2d">http://www.whatwg.org/specs/web-apps/current-work/multipage/scripting.html#canvasrenderingcontext2d</a></p>
+
+<p>[2] <a href="http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-picture-element">http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-picture-element</a></p>
+
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">CanvasRenderingContext2D Extensions maintained by <a href="https://github.com/vivekgalatage">vivekgalatage</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
