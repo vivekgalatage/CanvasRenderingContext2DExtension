@@ -121,4 +121,4 @@ References
 
 [2] http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-picture-element
 
-<span align="right"><a href="#table-of-contents">top</a></span>
+<p align="right"><a href="#table-of-contents">top</a></p>
