@@ -52,6 +52,37 @@ ctx.fillStyle = pattern;
 ctx.fill();
 ```
 
+Interface
+---------
+
+```idl
+typedef (HTMLImageElement or
+         HTMLVideoElement or
+         HTMLCanvasElement or
+         CanvasRenderingContext2D or
+         ImageBitmap or
+         HTMLPictureElement) CanvasImageSource;
+         
+enum CanvasFillRule { "nonzero", "evenodd" };
+
+[Constructor(optional unsigned long width, unsigned long height), Exposed=Window,Worker]
+interface CanvasRenderingContext2D {
+  ...
+
+  // drawing images
+  void drawImage(CanvasImageSource image, unrestricted double dx, unrestricted double dy);
+  void drawImage(CanvasImageSource image, unrestricted double dx, unrestricted double dy, unrestricted double dw, unrestricted double dh);
+  void drawImage(CanvasImageSource image, unrestricted double sx, unrestricted double sy, unrestricted double sw, unrestricted double sh, unrestricted double dx, unrestricted double dy, unrestricted double dw, unrestricted double dh);
+  
+  ...
+  
+  // creating pattern
+  CanvasPattern createPattern(CanvasImageSource image, [TreatNullAs=EmptyString] DOMString repetition);
+  
+  ...
+};
+```
+
 References
 ----------
 [1] http://www.whatwg.org/specs/web-apps/current-work/multipage/scripting.html#canvasrenderingcontext2d
