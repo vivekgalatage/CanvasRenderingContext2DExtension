@@ -18,7 +18,7 @@ Abstract
 
 This specification describes extension to drawImage and createPattern APIs of CanvasRenderingContext2D for supporting HTMLPictureElement.
 
-<p align="right"><a href="#table-of-contents">top</a></p>
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
 
 The CanvasRenderingContext2D
 ============================
@@ -27,7 +27,7 @@ The canvas element provides scripts with a resolution-dependent bitmap canvas, w
 
 Each canvas element is associated with the RenderingContext. Current specification defines: '2d' and 'webgl' contexts. The specification, [1], describes more details about the canvas element and its associated contexts.
 
-<p align="right"><a href="#table-of-contents">top</a></p>
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
 
 
 The &lt;picture&gt; element
@@ -37,7 +37,7 @@ The &lt;picture&gt; element is a container which provides multiples sources to i
 
 The specification, [2], describes more details about the &lt;picture&gt; element. 
 
-<p align="right"><a href="#table-of-contents">top</a></p>
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
 
 Use case
 ========
@@ -54,7 +54,7 @@ HTML
 <canvas id="targetCanvas" width="640" height="480"></canvas>
 ```
 
-<p align="right"><a href="#table-of-contents">top</a></p>
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
 
 JavaScript: drawImage() example
 -------------------------------
@@ -66,7 +66,7 @@ var pictureElement = document.getElementById('samplePicture');
 ctx.drawImage(pictureElement, 0, 0);
 ```
 
-<p align="right"><a href="#table-of-contents">top</a></p>
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
 
 JavaScript: createPattern() example
 -----------------------------------
@@ -80,7 +80,7 @@ ctx.fillStyle = pattern;
 ctx.fill();
 ```
 
-<p align="right"><a href="#table-of-contents">top</a></p>
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
 
 Interface
 ---------
@@ -113,7 +113,7 @@ interface CanvasRenderingContext2D {
 };
 ```
 
-<p align="right"><a href="#table-of-contents">top</a></p>
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
 
 References
 ----------
@@ -121,4 +121,4 @@ References
 
 [2] http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-picture-element
 
-<p align="right"><a href="#table-of-contents">top</a></p>
+<p align="right"><a href="#support-picture-in-canvasrenderingcontext2d">top</a></p>
