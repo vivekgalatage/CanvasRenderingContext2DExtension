@@ -1,6 +1,14 @@
 Support &lt;picture&gt; in CanvasRenderingContext2D
 ---------------------------------------------------
 
+Table of contents
+-----------------
+- <a href="#abstract">Abstract</a>
+- <a href="#the-canvasrenderingcontext2d">The CanvasRenderingContext2D</a>
+- <a href="#the-picture-element">The &lt;picture&gt; element</a>
+- <a href="#use-case">Use case</a>
+
+
 Abstract
 --------
 
@@ -24,7 +32,8 @@ The specification, [2], describes more details about the &lt;picture&gt; element
 &lt;picture&gt; example
 -----------------------
 
-<b>HTML</b>
+HTML
+----
 ```HTML
 <picture id="samplePicture">
     <source media="(min-width: 650px)" srcset="http://googlechrome.github.io/samples/picture-element/images/kitten-large.png">
@@ -34,7 +43,8 @@ The specification, [2], describes more details about the &lt;picture&gt; element
 <canvas id="targetCanvas" width="640" height="480"></canvas>
 ```
 
-<b>JavaScript: drawImage() example</b>
+JavaScript: drawImage() example
+-------------------------------
 ```javascript
 var ctx = document.getElementById('targetCanvas').getContext('2d');
 var pictureElement = document.getElementById('samplePicture');
@@ -42,7 +52,8 @@ var pictureElement = document.getElementById('samplePicture');
 ctx.drawImage(pictureElement, 0, 0);
 ```
 
-<b>JavaScript: createPattern() example</b>
+JavaScript: createPattern() example
+-----------------------------------
 ```javascript
 var ctx = document.getElementById('targetCanvas').getContext('2d');
 var pictureElement = document.getElementById('samplePicture');
