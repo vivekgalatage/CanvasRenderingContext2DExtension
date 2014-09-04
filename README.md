@@ -55,4 +55,5 @@ ctx.fill();
 References
 ----------
 [1] http://www.whatwg.org/specs/web-apps/current-work/multipage/scripting.html#canvasrenderingcontext2d
+
 [2] http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-picture-element
