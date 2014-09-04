@@ -42,7 +42,8 @@ The specification, [2], describes more details about the &lt;picture&gt; element
 Use case
 ========
 
-- HTML
+HTML
+----
 
 ```HTML
 <picture id="samplePicture">
@@ -55,7 +56,8 @@ Use case
 
 <span align="right"><a href="#table-of-contents">top</a></span>
 
-- JavaScript: drawImage() example
+JavaScript: drawImage() example
+-------------------------------
 
 ```javascript
 var ctx = document.getElementById('targetCanvas').getContext('2d');
@@ -66,7 +68,8 @@ ctx.drawImage(pictureElement, 0, 0);
 
 <span align="right"><a href="#table-of-contents">top</a></span>
 
-- JavaScript: createPattern() example
+JavaScript: createPattern() example
+-----------------------------------
 
 ```javascript
 var ctx = document.getElementById('targetCanvas').getContext('2d');
