@@ -1,5 +1,5 @@
-Support &lt;picture&gt; element in CanvasRenderingContext2D
-===========================================================
+Support &lt;picture&gt; in CanvasRenderingContext2D
+---------------------------------------------------
 
 Abstract
 --------
